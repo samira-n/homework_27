@@ -16,7 +16,7 @@ class CategoryListView(ListView):
 
     def get(self, request, *args, **kwargs):
         super().get(request, *args, **kwargs)
-        self.object_list = self.object_list.order_by('id')
+        self.object_list = self.object_list.order_by('name')
 
         return JsonResponse(data=[
             {
