@@ -9,3 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 from ads.models import Category, Ad
+
+
+def index(request):
+    return JsonResponse({"status": "ok"})
