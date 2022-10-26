@@ -23,20 +23,23 @@ from ads.views.ads import AdViewSet
 from ads.views.categories import CategoryViewSet
 from ads.views.locations import LocationViewSet
 from ads.views.service import index
-from ads.views.users import UserViewSet
 from ads.views import ads as ads_view
+from ads.views import users as users_view
 
 router = routers.SimpleRouter()
+router.register('ad', AdViewSet)
 router.register('cat', CategoryViewSet)
 router.register('location', LocationViewSet)
-router.register('user', UserViewSet)
-router.register('ad', AdViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('ad/', ads_view.AdListView.as_view())
-
+    path('ad_set/', ads_view.AdListView.as_view()),
+    path('user/', users_view.UserListView.as_view()),
+    path('user/<int:pk>/', users_view.UserDetailView.as_view()),
+    path('user/create/', users_view.UserCreateView.as_view()),
+    path('user/<int:pk>/update/', users_view.UserUpdateView.as_view()),
+    path('user/<int:pk>/delete/', users_view.UserDeleteView.as_view()),
 ]
 
 urlpatterns += router.urls

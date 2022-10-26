@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'role', 'age', 'locations']
+        exclude = ['password']
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -39,4 +39,4 @@ class AdSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ad
-        fields = ['name', 'author', 'price', 'description', 'is_published', 'image', 'category']
+        fields = ['id', 'name', 'author', 'price', 'description', 'is_published', 'image', 'category']
